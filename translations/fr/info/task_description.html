@@ -1,0 +1,145 @@
+<p>
+    En Informatique, une pile ("stack" en anglais) est une structure de données particulière, ou collection, 
+    pour laquelle les principales opérations sur la collection sont : 
+    l'ajout d'une entité dans la collection (opération <em>push</em>), et la suppression
+    d'une entité de la collection (opération <em>pop</em>).
+    L'ajout et la suppression sont organisée de telle sorte qu'une pile soit une structure de données
+   "Last-In-First-Out" (LIFO) (Dernier arrivé, premier sorti). 
+    Dans une structure de données LIFO, le dernier élément ajouté est le premier à être enlevé.
+    Souvent, une opération <em>peek</em> est implémentée, qui retourne la valeur de l'élément de tête (le dernier ajouté),
+    sans l'enlever.
+</p>
+
+<p>
+    Nous allons simuler le processus de pile avec Python.
+    Vous disposez d'une suite de commandes:<br>
+    - "PUSH X" -- ajoute <strong>X</strong> dans la pile, où <strong>X</strong> est un chiffre.<br>
+    - "POP" -- récupère et enlève l'élément de tête de la pile. Si la pile est vide, alors retourne 0 (zero) et ne fait rien.<br>
+    - "PEEK" -- récupère l'élément de tête de la pile sans l'enlever. Si la pile est vide, alors retourner 0 (zero).<br>
+    La pile ne contient que des chiffres.
+</p>
+<p>
+    Il vous faudra simuler l'exécution des toutes les commandes, et effectuer la somme de tous les chiffres pris dans la pile
+    ("PEEK" ou "POP").
+    La valeur initiale de la somme est 0 (zero).
+</p>
+<p>
+    Observons un exemple, dont voici la suite de commandes:<br>
+    ["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]
+</p>
+<style>
+    #example-table {
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+    #example-table td,
+    #example-table th {
+        border: 1px #294270 solid;
+        padding: 4px;
+        font-size: 16px;
+        text-align: center;
+    }
+</style>
+<table id="example-table">
+    <tr>
+        <th>Commande</th>
+        <th>Pile</th>
+        <th>Somme</th>
+    </tr>
+    <tr>
+        <td>PUSH 3</td>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td></td>
+        <td>0+3</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td></td>
+        <td>3+0</td>
+    </tr>
+    <tr>
+        <td>PUSH 4</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4</td>
+        <td>3+4</td>
+    </tr>
+
+    <tr>
+        <td>PUSH 9</td>
+        <td>4,9</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PUSH 0</td>
+        <td>4,9,0</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4,9,0</td>
+        <td>7+0</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td>4,9</td>
+        <td>7+0</td>
+    </tr>
+    <tr>
+        <td>PUSH 1</td>
+        <td>4,9,1</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4,9,1</td>
+        <td>7+1=<strong>8</strong></td>
+    </tr>
+
+</table>
+
+<p>
+    <strong>Input: </strong>Une suite de commandes, comme liste (list) de chaînes de caractères (string).
+</p>
+
+<p>
+    <strong>Output: </strong> La somme des chiffres pris dans la pile (int).
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>Exemple:</strong>
+    </p>
+    <pre class="brush: python">
+digit_stack(["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]) == 8
+digit_stack(["POP", "POP"]) == 0
+digit_stack(["PUSH 9", "PUSH 9", "POP"]) == 9
+digit_stack([]) == 0
+    </pre>
+</div>
+
+<p class="for_info_only">
+    <strong>Application: </strong>
+    Les piles ont de nombreuses applications.
+    Elles font partie de notre quotidien: pile d'assiettes dans la cuisine, 
+    pile de feuilles blanches dans le bac d'une imprimante...
+    Toutes ces piles suivent la logique  "Last In First Out" (LIFO):
+    lorsque l'on rajoute une assiette à une pile d'assiettes,
+    on l'ajoute au sommet de la pile,
+    et lorsque l'on enlève une assiette d'une pile, c'est généralement l'assiette du sommet de la pile
+    que l'on choisit d'enlever.
+</p>
+
+<p>
+    <strong>Préconditions:</strong><br>
+    0 &le; len(<strong>commands</strong>) &le; 20;<br>
+    all(re.match("\APUSH \d\Z", c) or с == "POP" or c == "PEEK" for c in <strong>commands</strong>)
+</p>
