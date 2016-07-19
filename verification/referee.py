@@ -38,5 +38,8 @@ api.add_listener(
     ON_CONNECT,
     CheckiOReferee(
         tests=TESTS,
-        function_name="digit_stack"
+        function_name={
+            "python": "digit_stack",
+            "js": "digitStack"
+        }
     ).on_ready)
