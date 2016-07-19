@@ -118,12 +118,17 @@
     <p>
         <strong>Exemple:</strong>
     </p>
-    <pre class="brush: python">
+    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
+digitStack(["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]) == 8
+digitStack(["POP", "POP"]) == 0
+digitStack(["PUSH 9", "PUSH 9", "POP"]) == 9
+digitStack([]) == 0
+{% else %}
 digit_stack(["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]) == 8
 digit_stack(["POP", "POP"]) == 0
 digit_stack(["PUSH 9", "PUSH 9", "POP"]) == 9
 digit_stack([]) == 0
-    </pre>
+{% endif %}</pre>
 </div>
 
 <p class="for_info_only">
