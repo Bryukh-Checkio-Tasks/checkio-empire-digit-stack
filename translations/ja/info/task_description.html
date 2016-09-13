@@ -1,0 +1,140 @@
+﻿<p>
+    コンピュータサイエンスにおいてスタックは特別なデータ型あるいはコレクション(データの集合)といえる。
+    その主要な操作はコレクションへのデータの追加("PUSH"として知られる)とデータの取り出し("POP"として知られる)である。
+    PUSH操作とPOP操作の関係はスタックが後入れ先出し(Last-In-First-Out (LIFO))データ構造を持つことを意味し、
+    最後に追加した要素を最初に取り出すやり方である。
+    しばしばPEEKも主要な操作として実装されており、これは取り出すこと無しに最新の要素の値を返す。
+</p>
+
+<p>
+    Pythonでスタックに対する操作を再現してみよう。あなたは以下のコマンドを与えられる:<br>
+    - "PUSH X" -- <strong>X</strong> をスタックの最後に追加する。 <strong>X</strong> は数である。<br>
+    - "POP" -- スタックの最後の要素を参照して取り出す。もしスタックが空なら0を返し何もしない。<br>
+    - "PEEK" -- スタックの最後の要素を参照する。もしスタックが空なら0を返す。<br>
+    このスタックは数値のみを格納可能とする。
+</p>
+<p>
+    全てのコマンドを実行し、スタックを参照("POP" または "PEEK")した際の値の合計を得ること。
+    合計の初期値は0とする。
+</p>
+<p>
+    例を見てみよう。以下の一続きのコマンド実行結果である:<br>
+    ["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]
+</p>
+<style>
+    #example-table {
+        border-collapse: collapse;
+        margin-bottom: 10px;
+    }
+
+    #example-table td,
+    #example-table th {
+        border: 1px #294270 solid;
+        padding: 4px;
+        font-size: 16px;
+        text-align: center;
+    }
+</style>
+<table id="example-table">
+    <tr>
+        <th>Command</th>
+        <th>Stack</th>
+        <th>Sum</th>
+    </tr>
+    <tr>
+        <td>PUSH 3</td>
+        <td>3</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td></td>
+        <td>0+3</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td></td>
+        <td>3+0</td>
+    </tr>
+    <tr>
+        <td>PUSH 4</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4</td>
+        <td>3+4</td>
+    </tr>
+
+    <tr>
+        <td>PUSH 9</td>
+        <td>4,9</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PUSH 0</td>
+        <td>4,9,0</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4,9,0</td>
+        <td>7+0</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td>4,9</td>
+        <td>7+0</td>
+    </tr>
+    <tr>
+        <td>PUSH 1</td>
+        <td>4,9,1</td>
+        <td>7</td>
+    </tr>
+    <tr>
+        <td>PEEK</td>
+        <td>4,9,1</td>
+        <td>7+1=<strong>8</strong></td>
+    </tr>
+
+</table>
+
+<p>
+    <strong>入力: </strong> 一続きのコマンド群。 (string型のリスト)
+</p>
+
+<p>
+    <strong>出力: </strong> 参照した数の合計 (integer型)
+</p>
+
+
+<div class="for_info_only">
+    <p>
+        <strong>例:</strong>
+    </p>
+    <pre class="brush: python">{% if interpreter.slug == "js-node" %}
+digitStack(["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]) == 8
+digitStack(["POP", "POP"]) == 0
+digitStack(["PUSH 9", "PUSH 9", "POP"]) == 9
+digitStack([]) == 0
+{% else %}
+digit_stack(["PUSH 3", "POP", "POP", "PUSH 4", "PEEK", "PUSH 9", "PUSH 0", "PEEK", "POP", "PUSH 1", "PEEK"]) == 8
+digit_stack(["POP", "POP"]) == 0
+digit_stack(["PUSH 9", "PUSH 9", "POP"]) == 9
+digit_stack([]) == 0
+{% endif %}</pre>
+</div>
+
+<p class="for_info_only">
+    <strong>どのように使われるか:: </strong>
+    スタックは多くのものに適用できる。書庫の本からプリンターのトレイ内の用紙まで我々は日々の生活において様々なスタックを目にしている。
+    それらは後入れ先出し(LIFO)論理に従う。
+    本が山積みになっていればその上に本を置き、手に取るのは一番上の本である。
+</p>
+
+<p>
+    <strong>事前条件:</strong><br>
+    0 &le; len(<strong>commands</strong>) &le; 20;<br>
+    all(re.match("\APUSH \d\Z", c) or с == "POP" or c == "PEEK" for c in <strong>commands</strong>)
+</p>
